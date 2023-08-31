@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [read, setRead] = useState(true);
+  const [display, setDisplay] = useState("none");
+
+  const readmore = (e) => {
+    console.log(e.target);
+    setRead(!read);
+    setDisplay(read ? "inline" : "none");
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <p>
+      A computer is a machine that can be programmed to carry out sequences of
+      arithmetic or...<span style={{ display: display }}>logical operations (computation) automatically. Modern
+      digital electronic computers can perform generic sets of operations known
+      as programs. These programs enable computers to perform a wide range of
+      tasks.
+     </span>
+      <a onClick={readmore} style={{ color: "blue", fontSize: "10px" }}>
+        {read ? "read more" : "read less"}
+      </a>
+    </p>
   );
 }
 
